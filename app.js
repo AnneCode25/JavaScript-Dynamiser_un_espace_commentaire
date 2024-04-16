@@ -34,7 +34,10 @@ function addComment (){
     
         document.getElementById("first-name").value="";
         document.getElementById("last-name").value="";
-        document.getElementById("message").value="";    
+        document.getElementById("message").value="";
+        
+        document.getElementById("error-message").style.display="none";
+
         }
     }
 
