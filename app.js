@@ -1,9 +1,7 @@
-// Empêcher le rafraichissement de la page
 document.getElementById("bouton").addEventListener("click", function(event)
 {
     //Cale empêche le rafraichissement de la page
     event.preventDefault();
-
 
     // appelle de la fonction qui ajoute un commentaire
     addComment();
@@ -14,6 +12,7 @@ function addComment (){
     let lastName = document.getElementById("last-name").value;
     let comment = document.getElementById("message").value;
 
+    //Vérification des champs 
     if (firstName === "" || lastName === "" || comment ===""){
         document.getElementById("error-message").style.display="block";
     }else {
@@ -37,7 +36,6 @@ function addComment (){
         document.getElementById("message").value="";
         
         document.getElementById("error-message").style.display="none";
-
         }
     }
 
