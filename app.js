@@ -1,21 +1,27 @@
-document.getElementById("bouton").addEventListener("click", function(event)
+document.getElementById("form").addEventListener("submit", function(event)
 {
     //Cale empêche le rafraichissement de la page
     event.preventDefault();
 
     // appelle de la fonction qui ajoute un commentaire
-    addComment();
+    verificationErreur();
 });
 
-function addComment (){
+function verificationErreur (){
+
     let firstName = document.getElementById("first-name").value;
     let lastName = document.getElementById("last-name").value;
     let comment = document.getElementById("message").value;
 
     //Vérification des champs 
-    if (firstName === "" || lastName === "" || comment ===""){
+    if (/^\s*$/.test(firstName) || /^\s*$/.test(lastName) || /^\s*$/.test(comment)){
         document.getElementById("error-message").style.display="block";
-    }else {
+        return;
+    }
+
+    addComment();
+    
+    function addComment(){}
         let newComment = document.createElement("div");
         newComment.classList.add("flex", "space-x-4", "text-sm", "text-gray-500");
         newComment.innerHTML = `
@@ -31,12 +37,10 @@ function addComment (){
     
         commentList.appendChild(newComment);
     
-        document.getElementById("first-name").value="";
-        document.getElementById("last-name").value="";
-        document.getElementById("message").value="";
+        form.reset();
         
         document.getElementById("error-message").style.display="none";
-        }
+        
     }
 
 
